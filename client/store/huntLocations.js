@@ -15,8 +15,8 @@ const huntLocations = []
 /**
  * ACTION CREATORS
  */
-const getHuntLocations = (locations) => ({type: GET_HUNT_LOCATIONS, locations})
-const updateVisitedLocation = (huntLocationId) => ({type: UPDATE_VISITED_LOCATION, huntLocationId})
+const getHuntLocations = (gotHuntLocations) => ({type: GET_HUNT_LOCATIONS, gotHuntLocations})
+const updateVisitedLocation = (locationId) => ({type: UPDATE_VISITED_LOCATION, locationId})
 const dropHuntLocations = () => ({type: DROP_HUNT_LOCATIONS})
 
 /**
@@ -68,10 +68,10 @@ export const fetchDroppingHuntLocations = (userId, locationId) => async dispatch
 export default function(state = huntLocations, action) {
   switch (action.type) {
     case GET_HUNT_LOCATIONS:
-      return action.locations
+      return action.gotHuntLocations
     case UPDATE_VISITED_LOCATION: {
-      let currentLocations = [...state].slice(0)
-      let visitedLocationId = action.huntLocationId
+      let currentLocations = [...state].slice(0) // Test if we need .slice(0) on this since spreading into new array should create copy
+      let visitedLocationId = action.locationId
       currentLocations = currentLocations.filter(location => {
         if (location.huntLocation.locationId === visitedLocationId) {
           location.huntLocation.visited = true
