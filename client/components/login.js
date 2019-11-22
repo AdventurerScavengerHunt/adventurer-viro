@@ -1,7 +1,7 @@
 import React from "react"
 import { Text, TextInput, View, Button, StyleSheet } from "react-native"
 import { connect } from "react-redux"
-import ViroSample from "../../ar"
+import ViroSample from "../../viroSample"
 
 export default class Login extends React.Component {
   constructor() {
@@ -9,21 +9,21 @@ export default class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
-      submit: true
+      isAuthenticated: false,
+      error: false
     }
     this.submitLogin = this.submitLogin.bind(this)
   }
 
   submitLogin(e) {
+    // this.isAuthenticated = login(this.state.username, this.state.password)
     this.setState({
-      submit: false
+      isAuthenticated: true
     })
   }
 
   render() {
-    const ar = (
-      <ViroSample/>
-    )
+    const ar = <ViroSample />
 
     const login = (
       <View style={styles.container}>
@@ -44,7 +44,7 @@ export default class Login extends React.Component {
         <Button title=" Sumbit " onPress={this.submitLogin} />
       </View>
     )
-    return this.state.submit ? login : ar
+    return this.state.isAuthenticated ? ar : login
   }
 }
 
@@ -61,5 +61,9 @@ const styles = StyleSheet.create({
 })
 
 // const mapDispatch = dispatch => {
-//   // Login Data
+//   return {
+//     login(username, password) {
+//       dispatch(loginThunk(username, password))
+//     }
+//   }
 // }
