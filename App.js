@@ -7,24 +7,20 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-import React, { Component } from 'react';
+import React, { Component } from "react"
 import {
   AppRegistry,
   Text,
   View,
   StyleSheet,
   PixelRatio,
-  TouchableHighlight,
-} from 'react-native';
+  TouchableHighlight
+} from "react-native"
 
-import Login from './client/components/login'
+import Login from "./client/components/login"
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-    <Login></Login>
-    </View>
-  )
+  return <Login />
 }
 
 const styles = StyleSheet.create({
@@ -35,5 +31,3 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   }
 })
-
-
