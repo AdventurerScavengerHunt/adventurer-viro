@@ -11,7 +11,6 @@ class MapScreen extends Component {
       userLatitude: 0,
       userLongitude: 0
     }
-    this.handlePress = this.handlePress.bind(this);
   }
   async componentDidMount() {
     this.props.fetchHuntLocations();
