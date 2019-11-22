@@ -1,31 +1,33 @@
-import axios from 'axios'
+import axios from 'axios';
 
 /**
  * ACTION TYPES
  */
-const GET_HUNTS = 'GET_HUNTS'
+const GET_HUNTS = 'GET_HUNTS';
 
 /**
  * INITIAL STATE
  */
-const hunts = []
+const hunts = [];
 
 /**
  * ACTION CREATORS
  */
-const getHunts = (hunts) => ({type: GET_HUNTS, hunts})
+const getHunts = gotHunts => ({ type: GET_HUNTS, gotHunts });
 
 /**
  * THUNK CREATORS
  */
 export const fetchAllHunts = () => async dispatch => {
   try {
-    const res = await axios.get('/api/hunts') /* will need to update path once database is deployed! */
-    dispatch(getHunts(res.data))
+    const res = await axios.get(
+      'https://adventurerapp.herokuapp.com/api/hunts'
+    ); /* will need to update path once database is deployed! */
+    dispatch(getHunts(res.data));
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
-}
+};
 
 /**
  * REDUCER
@@ -33,8 +35,8 @@ export const fetchAllHunts = () => async dispatch => {
 export default function(state = hunts, action) {
   switch (action.type) {
     case GET_HUNTS:
-      return action.hunts
+      return action.gotHunts;
     default:
-      return state
+      return state;
   }
 }
