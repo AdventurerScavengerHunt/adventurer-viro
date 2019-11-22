@@ -1,29 +1,30 @@
-import React from "react"
-import { Text, TextInput, View, Button, StyleSheet } from "react-native"
-import { connect } from "react-redux"
-import ViroSample from "../../viroSample"
+import React from 'react';
+import { Text, TextInput, View, Button, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import ViroSample from '../../viroSample';
+import MapScreen from './map-screen';
 
 export default class Login extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      username: "",
-      password: "",
+      username: '',
+      password: '',
       isAuthenticated: false,
-      error: false
-    }
-    this.submitLogin = this.submitLogin.bind(this)
+      error: false,
+    };
+    this.submitLogin = this.submitLogin.bind(this);
   }
 
   submitLogin(e) {
     // this.isAuthenticated = login(this.state.username, this.state.password)
     this.setState({
-      isAuthenticated: true
-    })
+      isAuthenticated: true,
+    });
   }
 
   render() {
-    const ar = <ViroSample />
+    const ar = <ViroSample />;
 
     const login = (
       <View style={styles.container}>
@@ -40,25 +41,25 @@ export default class Login extends React.Component {
           value={this.state.password}
         />
         <View style={{ margin: 7 }} />
-        <Text>{this.state.error ? "Incorrent username or password" : ""}</Text>
+        <Text>{this.state.error ? 'Incorrent username or password' : ''}</Text>
         <Button title=" Sumbit " onPress={this.submitLogin} />
       </View>
-    )
-    return this.state.isAuthenticated ? ar : login
+    );
+    return this.state.isAuthenticated ? <MapScreen /> : login;
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   errorMessageText: {
-    textDecorationColor: "red"
-  }
-})
+    textDecorationColor: 'red',
+  },
+});
 
 // const mapDispatch = dispatch => {
 //   return {

@@ -7,27 +7,33 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-import React, { Component } from "react"
+import React, { Component } from 'react';
 import {
   AppRegistry,
   Text,
   View,
   StyleSheet,
   PixelRatio,
-  TouchableHighlight
-} from "react-native"
+  TouchableHighlight,
+} from 'react-native';
+import { Provider } from 'react-redux';
+import store from './client/store';
 
-import Login from "./client/components/login"
+import Login from './client/components/login';
 
 export default function App() {
-  return <Login />
+  return (
+    <Provider store={store}>
+      <Login />
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-})
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
